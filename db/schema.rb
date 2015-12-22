@@ -11,7 +11,62 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151217120040) do
+ActiveRecord::Schema.define(version: 20151222153424) do
+
+  create_table "apis", force: :cascade do |t|
+    t.integer  "service_id"
+    t.string   "name"
+    t.string   "request_type"
+    t.string   "path"
+    t.text     "description"
+    t.boolean  "status"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "apis", ["service_id"], name: "index_apis_on_service_id"
+
+  create_table "entities", force: :cascade do |t|
+    t.integer  "project_id"
+    t.string   "name"
+    t.text     "description"
+    t.boolean  "status"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "entities", ["project_id"], name: "index_entities_on_project_id"
+
+  create_table "fields", force: :cascade do |t|
+    t.integer  "api_id"
+    t.string   "name"
+    t.string   "field_type"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "fields", ["api_id"], name: "index_fields_on_api_id"
+
+  create_table "projects", force: :cascade do |t|
+    t.string   "name"
+    t.string   "base_url"
+    t.integer  "user_id"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.integer  "project_id"
+    t.string   "name"
+    t.text     "description"
+    t.boolean  "status"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "services", ["project_id"], name: "index_services_on_project_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

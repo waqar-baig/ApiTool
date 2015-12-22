@@ -1,0 +1,16 @@
+<%= simple_form_for(@api) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :service %>
+    <%= f.input :name %>
+    <%= f.input :request_type %>
+    <%= f.input :path %>
+    <%= f.input :description %>
+    <%= f.input :status %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
