@@ -1,24 +1,52 @@
 <p id="notice"><%= notice %></p>
+<div class='col-md-3'>
+	<blockquote>
+		<h2><%= @project.name %></h2>
+		<p>Base URl : <%= @project.base_url %></p>
+	</blockquote>
+	<div class='panel-group'>
+		<div class='panel panel-default'>
+			<div class ='panel-heading'>
+				<h4 class ='panel-title'>
+					Services
+				</h4>
+			</div>
+			<div class = 'panel-collapse collapse in', style='display:none'>
+				<div class = 'panel-body'>
+					<% @project.services.each do |project_service| %>
+						<ul class = 'list-unstyled'>
+							<li>
+								<%= link_to project_service.name, service_path(project_service), remote: true %>
+							</li>
+						</ul>
+					<% end %>
+				</div>
+			</div>
+		</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @project.name %>
-</p>
+		<div class='panel panel-default'>
+			<div class ='panel-heading'>
+				<h4 class ='panel-title'>
+					Objects
+				</h4>
+			</div>
+			<div class = 'panel-collapse collapse in', style='display:none'>
+				<div class = 'panel-body'>
+					<% @project.entities.each do |project_entity| %>
+						<ul class = 'list-unstyled'>
+							<li>
+								<%= link_to project_entity.name, '' %>
+							</li>
+						</ul>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
 
-<p>
-  <strong>Base url:</strong>
-  <%= @project.base_url %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @project.user %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @project.description %>
-</p>
-
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+</div>
+<div class='col-md-9'>
+	<div class='services-content'>
+	</div>
+</div>
+</div>

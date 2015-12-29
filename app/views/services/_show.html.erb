@@ -1,0 +1,22 @@
+<blockquote>
+	<h2><%= @service.name %></h2>
+	<small><span><%= @service.description %></span></small>
+</blockquote>
+<div class='panel-group'>
+	<% @service.apis.each do |api| %>
+		<div class='panel panel-default'>
+			<div class ='panel-heading'>
+				<h4 class ='panel-title'>
+					<%= api.path %>
+					<!-- ToDo Add class based on request type -->
+					<span class="label pull-right"><%= api.request_type %></span>
+				</h4>
+			</div>
+			<div class = 'panel-collapse collapse in', style='display:none'>
+				<% api.fields.each do |field|%>
+					<b><%= field.name %> : </b> <%= field.field_type %> 
+				<% end %>
+			</div>
+		</div>
+	<% end %>
+</div>

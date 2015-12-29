@@ -1,0 +1,4 @@
+$('.services-content').html("<%= escape_javascript( render 'show', formats: [ :html ]) %>")
+$('.services-content .panel-heading').click(function() {
+	$(this).next().slideToggle('slow');
+});

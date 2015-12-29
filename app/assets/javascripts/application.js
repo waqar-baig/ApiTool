@@ -15,3 +15,10 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require_tree .
+
+
+$(document).on('page:load ready', function() {
+  $('.panel-heading').click(function() {
+    $(this).next().slideToggle('slow');
+  });
+});
