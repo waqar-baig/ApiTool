@@ -4,7 +4,11 @@ class ServicesController < ApplicationController
   # GET /services
   # GET /services.json
   def index
-    @services = Service.all
+    @services = if params[:project_id].present?
+        Service.joins(project: :user).where(project_id: params[:project_id], 'projects.user_id'=> current_user.id)
+      else
+        Service.all
+      end
   end
 
   # GET /services/1
@@ -32,8 +36,8 @@ class ServicesController < ApplicationController
 
     respond_to do |format|
       if @service.save
-        format.html { redirect_to @service, notice: 'Service was successfully created.' }
-        format.json { render :show, status: :created, location: @service }
+        format.html { redirect_to [@service.project, @service], notice: 'Service was successfully created.' }
+        format.json { render :show, status: :created }
       else
         format.html { render :new }
         format.json { render json: @service.errors, status: :unprocessable_entity }
@@ -46,8 +50,8 @@ class ServicesController < ApplicationController
   def update
     respond_to do |format|
       if @service.update(service_params)
-        format.html { redirect_to @service, notice: 'Service was successfully updated.' }
-        format.json { render :show, status: :ok, location: @service }
+        format.html { redirect_to [@service.project, @service], notice: 'Service was successfully updated.' }
+        format.json { render :show, status: :ok }
       else
         format.html { render :edit }
         format.json { render json: @service.errors, status: :unprocessable_entity }
@@ -60,7 +64,7 @@ class ServicesController < ApplicationController
   def destroy
     @service.destroy
     respond_to do |format|
-      format.html { redirect_to services_url, notice: 'Service was successfully destroyed.' }
+      format.html { redirect_to all_services_url, notice: 'Service was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

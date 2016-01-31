@@ -2,7 +2,7 @@
 
 <p>
   <strong>Service:</strong>
-  <%= @api.service %>
+  <%= @api.service_name %>
 </p>
 
 <p>
@@ -30,5 +30,6 @@
   <%= @api.status %>
 </p>
 
-<%= link_to 'Edit', edit_api_path(@api) %> |
-<%= link_to 'Back', apis_path %>
+<%= link_to 'Add Fields', new_project_service_api_field_path(@api.project, @api.service, @api) %> |
+<%= link_to 'Edit', [@api.project, @api.service, @api] %> |
+<%= link_to 'Back', [@api.project, @api.service] %>

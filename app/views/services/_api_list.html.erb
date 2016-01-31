@@ -14,7 +14,7 @@
   </thead>
 
   <tbody>
-    <% @apis.each do |api| %>
+    <% @service.apis.each do |api| %>
       <tr>
         <td><%= api.service_name %></td>
         <td><%= api.name %></td>
@@ -22,14 +22,10 @@
         <td><%= api.path %></td>
         <td><%= api.description %></td>
         <td><%= api.status %></td>
-        <td><%= link_to 'Show', project_service_api_path(params[:project_id], params[:service_id], api.id) %></td>
-        <td><%= link_to 'Edit', edit_project_service_api_path(params[:project_id], params[:service_id], api.id) %></td>
-        <td><%= link_to 'Destroy', project_service_api_path(params[:project_id], params[:service_id], api.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', project_service_api_path(params[:project_id], @service.id, api.id) %></td>
+        <td><%= link_to 'Edit', edit_project_service_api_path(params[:project_id], @service.id, api.id) %></td>
+        <td><%= link_to 'Destroy', project_service_api_path(params[:project_id], @service.id, api.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%#= link_to 'New Api', new_api_path %>

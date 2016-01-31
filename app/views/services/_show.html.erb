@@ -12,7 +12,7 @@
 					<span class="label pull-right"><%= api.request_type %></span>
 				</h4>
 			</div>
-			<div class = 'panel-collapse collapse in', style='display:none'>
+			<div class = 'panel-collapse collapse in' style='display:none'>
 				<% api.fields.each do |field|%>
 					<b><%= field.name %> : </b> <%= field.field_type %> 
 				<% end %>

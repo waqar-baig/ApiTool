@@ -16,13 +16,13 @@
   <tbody>
     <% @fields.each do |field| %>
       <tr>
-        <td><%= field.api %></td>
+        <td><%= field.api_name %></td>
         <td><%= field.name %></td>
         <td><%= field.field_type %></td>
         <td><%= field.description %></td>
-        <td><%= link_to 'Show', field %></td>
-        <td><%= link_to 'Edit', edit_field_path(field) %></td>
-        <td><%= link_to 'Destroy', field, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', project_service_api_field_path(params[:project_id], params[:service_id], params[:api_id], field.id) %></td>
+        <td><%= link_to 'Edit', edit_project_service_api_field_path(params[:project_id], params[:service_id], params[:api_id], field.id) %></td>
+        <td><%= link_to 'Destroy', project_service_api_field_path(params[:project_id], params[:service_id], params[:api_id], field.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Field', new_field_path %>
+<%= link_to 'New Field', new_project_service_api_field_path(params[:project_id], params[:service_id], params[:api_id]) %>

@@ -1,0 +1,58 @@
+                        Prefix Verb   URI Pattern                                                                       Controller#Action
+              new_user_session GET    /users/sign_in(.:format)                                                          devise/sessions#new
+                  user_session POST   /users/sign_in(.:format)                                                          devise/sessions#create
+          destroy_user_session DELETE /users/sign_out(.:format)                                                         devise/sessions#destroy
+                 user_password POST   /users/password(.:format)                                                         devise/passwords#create
+             new_user_password GET    /users/password/new(.:format)                                                     devise/passwords#new
+            edit_user_password GET    /users/password/edit(.:format)                                                    devise/passwords#edit
+                               PATCH  /users/password(.:format)                                                         devise/passwords#update
+                               PUT    /users/password(.:format)                                                         devise/passwords#update
+      cancel_user_registration GET    /users/cancel(.:format)                                                           devise/registrations#cancel
+             user_registration POST   /users(.:format)                                                                  devise/registrations#create
+         new_user_registration GET    /users/sign_up(.:format)                                                          devise/registrations#new
+        edit_user_registration GET    /users/edit(.:format)                                                             devise/registrations#edit
+                               PATCH  /users(.:format)                                                                  devise/registrations#update
+                               PUT    /users(.:format)                                                                  devise/registrations#update
+                               DELETE /users(.:format)                                                                  devise/registrations#destroy
+                      entities GET    /entities(.:format)                                                               entities#index
+                               POST   /entities(.:format)                                                               entities#create
+                    new_entity GET    /entities/new(.:format)                                                           entities#new
+                   edit_entity GET    /entities/:id/edit(.:format)                                                      entities#edit
+                        entity GET    /entities/:id(.:format)                                                           entities#show
+                               PATCH  /entities/:id(.:format)                                                           entities#update
+                               PUT    /entities/:id(.:format)                                                           entities#update
+                               DELETE /entities/:id(.:format)                                                           entities#destroy
+    project_service_api_fields GET    /projects/:project_id/services/:service_id/apis/:api_id/fields(.:format)          fields#index
+                               POST   /projects/:project_id/services/:service_id/apis/:api_id/fields(.:format)          fields#create
+ new_project_service_api_field GET    /projects/:project_id/services/:service_id/apis/:api_id/fields/new(.:format)      fields#new
+edit_project_service_api_field GET    /projects/:project_id/services/:service_id/apis/:api_id/fields/:id/edit(.:format) fields#edit
+     project_service_api_field GET    /projects/:project_id/services/:service_id/apis/:api_id/fields/:id(.:format)      fields#show
+                               PATCH  /projects/:project_id/services/:service_id/apis/:api_id/fields/:id(.:format)      fields#update
+                               PUT    /projects/:project_id/services/:service_id/apis/:api_id/fields/:id(.:format)      fields#update
+                               DELETE /projects/:project_id/services/:service_id/apis/:api_id/fields/:id(.:format)      fields#destroy
+          project_service_apis GET    /projects/:project_id/services/:service_id/apis(.:format)                         apis#index
+                               POST   /projects/:project_id/services/:service_id/apis(.:format)                         apis#create
+       new_project_service_api GET    /projects/:project_id/services/:service_id/apis/new(.:format)                     apis#new
+      edit_project_service_api GET    /projects/:project_id/services/:service_id/apis/:id/edit(.:format)                apis#edit
+           project_service_api GET    /projects/:project_id/services/:service_id/apis/:id(.:format)                     apis#show
+                               PATCH  /projects/:project_id/services/:service_id/apis/:id(.:format)                     apis#update
+                               PUT    /projects/:project_id/services/:service_id/apis/:id(.:format)                     apis#update
+                               DELETE /projects/:project_id/services/:service_id/apis/:id(.:format)                     apis#destroy
+              project_services GET    /projects/:project_id/services(.:format)                                          services#index
+                               POST   /projects/:project_id/services(.:format)                                          services#create
+           new_project_service GET    /projects/:project_id/services/new(.:format)                                      services#new
+          edit_project_service GET    /projects/:project_id/services/:id/edit(.:format)                                 services#edit
+               project_service GET    /projects/:project_id/services/:id(.:format)                                      services#show
+                               PATCH  /projects/:project_id/services/:id(.:format)                                      services#update
+                               PUT    /projects/:project_id/services/:id(.:format)                                      services#update
+                               DELETE /projects/:project_id/services/:id(.:format)                                      services#destroy
+                      projects GET    /projects(.:format)                                                               projects#index
+                               POST   /projects(.:format)                                                               projects#create
+                   new_project GET    /projects/new(.:format)                                                           projects#new
+                  edit_project GET    /projects/:id/edit(.:format)                                                      projects#edit
+                       project GET    /projects/:id(.:format)                                                           projects#show
+                               PATCH  /projects/:id(.:format)                                                           projects#update
+                               PUT    /projects/:id(.:format)                                                           projects#update
+                               DELETE /projects/:id(.:format)                                                           projects#destroy
+                  all_services GET    /services(.:format)                                                               services#index
+                          root GET    /                                                                                 home#index

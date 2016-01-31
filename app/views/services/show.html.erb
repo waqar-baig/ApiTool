@@ -2,7 +2,7 @@
 
 <p>
   <strong>Project:</strong>
-  <%= @service.project %>
+  <%= @service.project_name %>
 </p>
 
 <p>
@@ -20,5 +20,7 @@
   <%= @service.status %>
 </p>
 
-<%= link_to 'Edit', edit_service_path(@service) %> |
-<%= link_to 'Back', services_path %>
+<%= link_to 'Add API', new_project_service_api_path(@service.project_id, @service), class: 'btn btn-info' %> |
+<%= link_to 'Edit', edit_project_service_path(@service.project_id, @service) %> |
+<%= link_to 'Back', project_services_path(@service.project_id) %>
+<%= render 'services/api_list' %>

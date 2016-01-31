@@ -16,7 +16,7 @@
 					<% @project.services.each do |project_service| %>
 						<ul class = 'list-unstyled'>
 							<li>
-								<%= link_to project_service.name, service_path(project_service), remote: true %>
+								<%= link_to project_service.name, project_service_path(@project, project_service), remote: true %>
 							</li>
 						</ul>
 					<% end %>

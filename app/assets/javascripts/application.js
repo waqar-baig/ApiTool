@@ -13,11 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require turbolinks
 //= require_tree .
 
 
-$(document).on('page:load ready', function() {
+$(function() {
   $('.panel-heading').click(function() {
     $(this).next().slideToggle('slow');
   });
