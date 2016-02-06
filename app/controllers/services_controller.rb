@@ -22,7 +22,8 @@ class ServicesController < ApplicationController
 
   # GET /services/new
   def new
-    @service = Service.new
+    project = Project.find(params[:project_id])
+    @service = project.services.build
   end
 
   # GET /services/1/edit
@@ -37,6 +38,7 @@ class ServicesController < ApplicationController
     respond_to do |format|
       if @service.save
         format.html { redirect_to [@service.project, @service], notice: 'Service was successfully created.' }
+        format.js
         format.json { render :show, status: :created }
       else
         format.html { render :new }

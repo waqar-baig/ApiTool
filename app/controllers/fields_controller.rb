@@ -35,6 +35,7 @@ class FieldsController < ApplicationController
     respond_to do |format|
       if @field.save
         format.html { redirect_to [@project, @service, @api, @field], notice: 'Field was successfully created.' }
+        format.js
         format.json { render :show, status: :created }
       else
         format.html { render :new }
@@ -49,6 +50,7 @@ class FieldsController < ApplicationController
     respond_to do |format|
       if @field.update(field_params)
         format.html { redirect_to project_service_api_field_path(params[:project_id], params[:service_id], params[:api_id], @field.id), notice: 'Field was successfully updated.' }
+        format.js
         format.json { render :show, status: :ok }
       else
         format.html { render :edit }

@@ -1,14 +1,10 @@
-<%= simple_form_for([@project, @service, @api]) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.association :service %>
-    <%= f.input :name %>
-    <%= f.input :request_type %>
-    <%= f.input :path %>
-    <%= f.input :description %>
-    <%= f.input :status %>
-  </div>
+<%= simple_form_for([@project, @service, @api], remote: request.xhr?) do |f| %>
+  <%= f.association :service %>
+  <%= f.input :name %>
+  <%= f.input :request_type %>
+  <%= f.input :path %>
+  <%= f.input :description %>
+  <%= f.input :status %>
 
   <div class="form-actions">
     <%= f.button :submit %>

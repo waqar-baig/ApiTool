@@ -9,13 +9,9 @@
 <body>
 	<%= render 'shared/header' %>
 	<div class="container">
-	<%if notice %>
-		<div class="alert alert-success"><%= notice %></div>
-	<%end%>
-	<%if alert %>
-		<div class="alert alert-success"><%= alert %></div>
-	<%end%>
-	<%= yield %>
+  	<%= bootstrap_flash %>
+  	<%= yield %>
 	</div>
+  <%= render 'shared/modal_dialog' %>
 </body>
 </html>

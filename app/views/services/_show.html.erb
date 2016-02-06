@@ -1,22 +1,37 @@
-<blockquote>
-	<h2><%= @service.name %></h2>
-	<small><span><%= @service.description %></span></small>
+<blockquote class="clearfix">
+  <div class="pull-left">
+    <h3><%= @service.name %>
+    <sup><%= link_to ('<i class="fa fa-pencil"></i>'.html_safe), edit_project_service_path(params[:id], @service.id), remote: true %></sup>
+    </h3>
+    <small><span><%= @service.description %></span></small>
+  </div>
+  <div class="pull-right">
+    <%= link_to 'Add API', new_project_service_api_path(params[:project_id], @service.id), remote:true, class: 'btn btn-primary' %>
+  </div>
 </blockquote>
 <div class='panel-group'>
-	<% @service.apis.each do |api| %>
-		<div class='panel panel-default'>
-			<div class ='panel-heading'>
-				<h4 class ='panel-title'>
-					<%= api.path %>
-					<!-- ToDo Add class based on request type -->
-					<span class="label pull-right"><%= api.request_type %></span>
-				</h4>
-			</div>
-			<div class = 'panel-collapse collapse in' style='display:none'>
-				<% api.fields.each do |field|%>
-					<b><%= field.name %> : </b> <%= field.field_type %> 
-				<% end %>
-			</div>
-		</div>
-	<% end %>
+  <% @service.apis.each do |api| %>
+    <div class='panel panel-default'>
+      <div class ='panel-heading'>
+        <h4 class ='panel-title'>
+          <span class="label label-primary"><%= api.request_type %></span>
+          <%= api.path %>
+          <sup><%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_project_service_api_path(params[:project_id], @service.id, api.id), remote: true %></sup>
+          <!-- ToDo Add class based on request type -->
+        </h4>
+      </div>
+      <div class = 'panel-collapse collapse in'>
+        <div class="panel-body">
+          <% api.fields.each do |field|%>
+            <b><%= field.name %> : </b> <%= field.field_type %> 
+          <% end %>
+          <%= link_to 'Add Field', new_project_service_api_field_path(params[:project_id], @service.id, api.id), remote: true %>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>
+  <% if @service.apis.count == 0 %>
+    <h3 class="">There are no API.
+      <%= link_to 'Create Now', new_project_service_api_path(params[:project_id], @service.id), remote:true, class: 'btn btn-primary' %></h3>
+  <% end -%>
